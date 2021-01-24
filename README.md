@@ -8,4 +8,4 @@ I might make some proper version of this in the distant future so this cursed th
 
 Here is how it works:
 User chooses difficulty and exact text and when he's ready each sentence is printed as he tries to write it as soon as possible with least errors as possible.
-At the end it simply evaluates his performance by calculatin his wpm and accuracy.
+At the end it simply evaluates his performance by calculating his wpm and accuracy.

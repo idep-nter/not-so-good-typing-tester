@@ -14,7 +14,7 @@ def main():
 			 			  'Text!',  
 			           'hard text2' : 'Text text. Text. Text, text. Text?' 
 			                          'Text!',
-			           'hard text3' : 'Text text. Text. Text, text. Text? 
+			           'hard text3' : 'Text text. Text. Text, text. Text?' 
 				                  'Text!'}
 			}
 

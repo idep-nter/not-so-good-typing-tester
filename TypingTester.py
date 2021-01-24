@@ -3,19 +3,19 @@ import datetime
 def main():
 	intro()
 	texts = {'easy' : {'easy text1' : 'Text text. Text.',
-					   'easy text2' : 'Text text. Text.',
-					   'easy text3' : 'Text text. Text.'},
+			   'easy text2' : 'Text text. Text.',
+			   'easy text3' : 'Text text. Text.'},
 
 			 'medium' : {'medium text1' : 'Text text. Text. Text, text.',
-			 			 'medium text2' : 'Text text. Text, text.',
-			 			 'medium text3' : 'Text text. Text. Text, text.'},
+			 	     'medium text2' : 'Text text. Text, text.',
+			             'medium text3' : 'Text text. Text. Text, text.'},
 
 			 'hard' : {'hard text1' : 'Text text. Text. Text, text. Text?' 
-			 						  'Text!',  
-			 		   'hard text2' : 'Text text. Text. Text, text. Text?' 
+			 			  'Text!',  
+			           'hard text2' : 'Text text. Text. Text, text. Text?' 
 			                          'Text!',
-			 		   'hard text3' : 'Text text. Text. Text, text. Text? Text!'
-			 		   }
+			           'hard text3' : 'Text text. Text. Text, text. Text? 
+				                  'Text!'}
 			}
 
 	while True:

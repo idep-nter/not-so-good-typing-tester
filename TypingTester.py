@@ -1,21 +1,28 @@
 import datetime
 
 def main():
+	"""
+	Main function prints intro and asks to choose difficulty and the text. 
+	Prints the whole text and when is user ready it starts timer. 
+	Each sentence is printed alone so user won't get lost in the longer texts.
+	After all is done, program calculates user's wpm and accuracy and prints it.
+	At the end it asks user if he want's to try again.
+	"""
 	intro()
 	texts = {'easy' : {'easy text1' : 'Text text. Text.',
-			   'easy text2' : 'Text text. Text.',
-			   'easy text3' : 'Text text. Text.'},
+					   'easy text2' : 'Text text. Text.',
+					   'easy text3' : 'Text text. Text.'},
 
-		'medium' : {'medium text1' : 'Text text. Text. Text, text.',
-			    'medium text2' : 'Text text. Text, text.',
-			    'medium text3' : 'Text text. Text. Text, text.'},
+			 'medium' : {'medium text1' : 'Text text. Text. Text, text.',
+			 			 'medium text2' : 'Text text. Text, text.',
+			 			 'medium text3' : 'Text text. Text. Text, text.'},
 
-		'hard' : {'hard text1' : 'Text text. Text. Text, text. Text?' 
-			 	         'Text!',  
-			  'hard text2' : 'Text text. Text. Text, text. Text?' 
-			                 'Text!',
-			  'hard text3' : 'Text text. Text. Text, text. Text?' 
-				         'Text!'}
+			 'hard' : {'hard text1' : 'Text text. Text. Text, text. Text?' 
+			 						  'Text!',  
+			 		   'hard text2' : 'Text text. Text. Text, text. Text?' 
+			                          'Text!',
+			 		   'hard text3' : 'Text text. Text. Text, text. Text? Text!'
+			 		   }
 			}
 
 	while True:
@@ -23,8 +30,6 @@ def main():
 		choice = chooseText(texts, difficulty)
 		text = texts[difficulty][choice]
 		print(f'Your text:\n{text}')
-		text = insertNewLine(text)
-		text = text.split('\n')
 		input('Press enter when you are ready.')
 		start = datetime.datetime.now()
 		test = textType(text)
@@ -56,6 +61,9 @@ Happy typing!
 
 
 def chooseDiff():
+	"""
+	Asks user to select a difficulty and checks the answer.
+	"""
 	while True:
 		try:
 			difficulties = ['easy', 'medium', 'hard']
@@ -73,6 +81,10 @@ def chooseDiff():
 
 
 def chooseText(texts, difficulty):
+	"""
+	Asks user to selected a text from previously chosen diffulty and checks the
+	answer.
+	"""
 	while True:
 		try:
 			names = list(texts[difficulty].keys())
@@ -91,7 +103,14 @@ def chooseText(texts, difficulty):
 
 
 def textType(text):
+	"""
+	Inserts new line after each sentence and splits the text by it. Ten prints 
+	each sentence, asks user to write it and checks for errors. Returns total
+	number of errors.
+	"""
 	totalErrors = 0
+	text = insertNewLine(text)
+	text = text.split('\n')
 	for s in text:
 		print(s)
 		inpt = input()
@@ -101,7 +120,27 @@ def textType(text):
 	return totalErrors
 
 
+def insertNewLine(text):
+	"""
+	Inserts new line character after every sentence and returns modified text.
+	"""
+	newText = ''
+	last = ''
+	for i in text:
+		if last == '.' or last == '?' or last == '!':
+			i = '\n'
+		newText += i
+		last = i
+
+	return newText
+
+
+
 def countErrors(sentence, inpt):
+	"""
+	Simply checks correctness of each word in user's sentence by checking the 
+	original one. Returns number of errors.
+	"""
 	errors = 0
 	inpt = inpt.split()
 	for w in inpt:
@@ -112,6 +151,10 @@ def countErrors(sentence, inpt):
 
 
 def calcWpm(text, test, time):
+	"""
+	Calculates words per minute by spliting correct time in minutes and dividing 
+	it with number of words in text.
+	"""
 	time = time.total_seconds() / 60
 	words = text.split()
 	nWords = len(words)
@@ -121,25 +164,21 @@ def calcWpm(text, test, time):
 
 
 def makeAccu(text, test):
-	accuracy = ((len(text) - test) / len(text)) * 100
+	"""
+	Makes user's accuracy by calculating number of correct words divided by
+	total number of words in the text and multiply it by 100 at the end.
+	"""
+	words = text.split()
+	accuracy = ((len(words) - test) / len(words)) * 100
 
 	return accuracy
 
 
 def evaluation(wpm, accuracy):
+	"""
+	Print evalution of user with his wpm and accuracy.
+	"""
 	print(f'Your typing speed is {wpm} wpm with {accuracy}% accuracy!')
-
-
-def insertNewLine(text):
-	newText = ''
-	last = ''
-	for i in text:
-		if last == '.' or last == '?' or last == '!':
-			i = '\n'
-		newText += i
-		last = i
-
-	return newText
 
 
 main()

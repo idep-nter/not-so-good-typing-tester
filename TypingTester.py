@@ -43,7 +43,6 @@ def main():
         else:
             exit()
 
-
 def intro():
     print("""
 Hello! This a typing tester - an application where you can test how good you are
@@ -53,7 +52,6 @@ After that you will try to type the text as soon as possible with least mistakes
 as you can!
 Happy typing!
     """)
-
 
 def chooseDiff():
     """
@@ -65,16 +63,13 @@ def chooseDiff():
             difficulty = input('Choose difficulty: easy / medium / hard\n')
             if difficulty.lower() not in difficulties:
                 raise ValueError
-
         except ValueError:
             print('Please select correct difficulty.')
             continue
-
         else:
             break
 
     return difficulty
-
 
 def chooseText(texts, difficulty):
     """
@@ -88,16 +83,13 @@ def chooseText(texts, difficulty):
             text = input('Choose text: ')
             if text not in names:
                 raise ValueError
-
         except ValueError:
             print('Please type a correct name of the choosen text.')
             continue
-
         else:
             break
 
     return text
-
 
 def textType(text):
     """
@@ -117,7 +109,6 @@ def textType(text):
 
     return totalErrors
 
-
 def countErrors(sentence, inpt):
     """
     Counts errors in the sentence by iterating throught it and checking if a 
@@ -130,7 +121,6 @@ def countErrors(sentence, inpt):
             errors += 1
 
     return errors
-
 
 def calcWpm(text, test, time):
     """
@@ -156,13 +146,11 @@ def makeAccu(text, test):
 
     return accuracy
 
-
 def evaluation(wpm, accuracy):
     """
     Simply prints user's wpm and accuracy.
     """
     print(f'Your typing speed is {wpm} wpm with {accuracy}% accuracy!')
-
 
 def insertNewLine(text):
     """
@@ -177,6 +165,5 @@ def insertNewLine(text):
         last = i
 
     return newText
-
 
 main()

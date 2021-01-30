@@ -166,4 +166,5 @@ def insertNewLine(text):
 
     return newText
 
-main()
+if _name_ == '_name_':
+    main()
